@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Banco.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;Banco&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">banco</a> &gt; <span class="el_source">Banco.java</span></div><h1>Banco.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package banco;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Usuario
+ */
+<span class="nc" id="L16">public class Banco {</span>
+
+<span class="nc" id="L18">    static Scanner sc = new Scanner(System.in);</span>
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+<span class="nc" id="L25">        ArrayList&lt;Gestor&gt; gestores = new ArrayList();</span>
+<span class="nc" id="L26">        ArrayList&lt;Cliente&gt; clientes = new ArrayList();</span>
+<span class="nc" id="L27">        ArrayList&lt;Cuenta&gt; cuentas = new ArrayList();</span>
+<span class="nc" id="L28">        ArrayList&lt;tarjeta&gt; tar = new ArrayList();</span>
+<span class="nc" id="L29">        clientes.add(new Cliente(&quot;Rosa&quot;, &quot;Marcos&quot;, &quot;Gran Via&quot;, &quot;45345658L&quot;, 658753458, 19, 5789));</span>
+<span class="nc" id="L30">        cuentas.add(new Cuenta(&quot;45345658L&quot;, 5789, 1000, 100, LocalDate.of(2019, 5, 13)));</span>
+<span class="nc" id="L31">        cuentas.add(new Cuenta(&quot;45345658L&quot;, 5790, 4000, 100, LocalDate.of(2018, 3, 13)));</span>
+<span class="nc" id="L32">        tar.add(new tarjeta(5789, 200, 100));</span>
+
+<span class="nc" id="L34">        gestores.add(new Gestor(&quot;Raul&quot;, &quot;clave&quot;));</span>
+        int opc;
+        do {
+<span class="nc" id="L37">            opc = mostrarMenu();</span>
+<span class="nc bnc" id="L38" title="All 4 branches missed.">            switch (opc) {</span>
+                case 1:
+                    int u;
+                    do {
+<span class="nc" id="L42">                        u = menuUsu();</span>
+<span class="nc bnc" id="L43" title="All 6 branches missed.">                        switch (u) {</span>
+                            case 1:
+<span class="nc" id="L45">                                System.out.println(&quot;Introduce su nombre de usuario: &quot;);</span>
+<span class="nc" id="L46">                                String nombre = sc.next();</span>
+<span class="nc" id="L47">                                System.out.println(&quot;Introduce su dni: &quot;);</span>
+<span class="nc" id="L48">                                String dni = sc.next();</span>
+<span class="nc" id="L49">                                System.out.println(&quot;Introduce su número de cuenta: &quot;);</span>
+<span class="nc" id="L50">                                int cuenta = sc.nextInt();</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">                                for (int i = 0; i &lt; clientes.size(); i++) {</span>
+<span class="nc bnc" id="L52" title="All 6 branches missed.">                                    if (clientes.get(i).getNombre().equals(nombre) &amp;&amp; clientes.get(i).getNif().equals(dni) &amp;&amp; clientes.get(i).getCuenta() == cuenta) {</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">                                        for (int j = 0; j &lt; cuentas.size(); j++) {</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">                                            if (cuentas.get(j).getCuenta() == clientes.get(i).getCuenta()) {</span>
+<span class="nc" id="L55">                                                System.out.println(&quot;Introduce la cantidad de dinero que desea ingresar: &quot;);</span>
+<span class="nc" id="L56">                                                double dinero = sc.nextDouble();</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">                                                if (clientes.get(i).ingresar(dinero, cuentas.get(j))) {</span>
+<span class="nc" id="L58">                                                    System.out.println(&quot;El dinero se ha ingresado con exito&quot;);</span>
+                                                } else {
+<span class="nc" id="L60">                                                    System.out.println(&quot;No se ha podido ingresar&quot;);</span>
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+<span class="nc" id="L66">                                break;</span>
+                            case 2:
+<span class="nc" id="L68">                                System.out.println(&quot;Introduce su nombre de usuario: &quot;);</span>
+<span class="nc" id="L69">                                nombre = sc.next();</span>
+<span class="nc" id="L70">                                System.out.println(&quot;Introduce su dni: &quot;);</span>
+<span class="nc" id="L71">                                dni = sc.next();</span>
+<span class="nc" id="L72">                                System.out.println(&quot;Introduce su número de cuenta: &quot;);</span>
+<span class="nc" id="L73">                                cuenta = sc.nextInt();</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">                                for (int i = 0; i &lt; clientes.size(); i++) {</span>
+<span class="nc bnc" id="L75" title="All 6 branches missed.">                                    if (clientes.get(i).getNombre().equals(nombre) &amp;&amp; clientes.get(i).getNif().equals(dni) &amp;&amp; clientes.get(i).getCuenta() == cuenta) {</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">                                        for (int j = 0; j &lt; cuentas.size(); j++) {</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">                                            if (cuentas.get(j).getCuenta() == clientes.get(i).getCuenta()) {</span>
+<span class="nc" id="L78">                                                System.out.println(&quot;Introduce la cantidad de dinero que desea ingresar: &quot;);</span>
+<span class="nc" id="L79">                                                double dinero = sc.nextDouble();</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">                                                if (clientes.get(i).retirar(dinero, cuentas.get(j))) {</span>
+<span class="nc" id="L81">                                                    System.out.println(&quot;El dinero se ha retirado con exito&quot;);</span>
+                                                } else {
+<span class="nc" id="L83">                                                    System.out.println(&quot;No se ha podido retirar&quot;);</span>
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+<span class="nc" id="L89">                                break;</span>
+                            case 3:
+<span class="nc" id="L91">                                System.out.println(&quot;Introduce su nombre de usuario: &quot;);</span>
+<span class="nc" id="L92">                                nombre = sc.next();</span>
+<span class="nc" id="L93">                                System.out.println(&quot;Introduce su dni: &quot;);</span>
+<span class="nc" id="L94">                                dni = sc.next();</span>
+<span class="nc" id="L95">                                System.out.println(&quot;Introduce su número de cuenta: &quot;);</span>
+<span class="nc" id="L96">                                cuenta = sc.nextInt();</span>
+<span class="nc" id="L97">                                System.out.println(&quot;1. Pago internet&quot;);</span>
+<span class="nc" id="L98">                                System.out.println(&quot;2. Pago efectivo&quot;);</span>
+<span class="nc" id="L99">                                System.out.println(&quot;Introduce la opción: &quot;);</span>
+<span class="nc" id="L100">                                int n = sc.nextInt();</span>
+<span class="nc bnc" id="L101" title="All 2 branches missed.">                                if (n == 1) {</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">                                    for (int i = 0; i &lt; clientes.size(); i++) {</span>
+<span class="nc bnc" id="L103" title="All 6 branches missed.">                                        if (clientes.get(i).getNombre().equals(nombre) &amp;&amp; clientes.get(i).getNif().equals(dni) &amp;&amp; clientes.get(i).getCuenta() == cuenta) {</span>
+<span class="nc bnc" id="L104" title="All 2 branches missed.">                                            for (int j = 0; j &lt; cuentas.size(); j++) {</span>
+<span class="nc bnc" id="L105" title="All 2 branches missed.">                                                if (cuentas.get(j).getCuenta() == clientes.get(i).getCuenta()) {</span>
+<span class="nc" id="L106">                                                    System.out.println(&quot;Introduce la cantidad del pago: &quot;);</span>
+<span class="nc" id="L107">                                                    double cant = sc.nextDouble();</span>
+<span class="nc" id="L108">                                                    tar.get(i).pagoInternet(cant, cuentas.get(j));</span>
+                                                }
+                                            }
+
+                                        }
+                                    }
+<span class="nc bnc" id="L114" title="All 2 branches missed.">                                } else if (n == 2) {</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">                                    for (int i = 0; i &lt; clientes.size(); i++) {</span>
+<span class="nc bnc" id="L116" title="All 6 branches missed.">                                        if (clientes.get(i).getNombre().equals(nombre) &amp;&amp; clientes.get(i).getNif().equals(dni) &amp;&amp; clientes.get(i).getCuenta() == cuenta) {</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">                                            for (int j = 0; j &lt; cuentas.size(); j++) {</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">                                                if (cuentas.get(j).getCuenta() == clientes.get(i).getCuenta()) {</span>
+<span class="nc" id="L119">                                                    System.out.println(&quot;Introduce la cantidad del pago: &quot;);</span>
+<span class="nc" id="L120">                                                    double cant = sc.nextDouble();</span>
+<span class="nc" id="L121">                                                    tar.get(i).retirarDinero(cant, cuentas.get(j));</span>
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                break;
+                            case 4:
+<span class="nc" id="L129">                                System.out.println(&quot;Introduce su nombre de usuario: &quot;);</span>
+<span class="nc" id="L130">                                nombre = sc.next();</span>
+<span class="nc" id="L131">                                System.out.println(&quot;Introduce su dni: &quot;);</span>
+<span class="nc" id="L132">                                dni = sc.next();</span>
+<span class="nc bnc" id="L133" title="All 2 branches missed.">                                for (int i = 0; i &lt; clientes.size(); i++) {</span>
+<span class="nc bnc" id="L134" title="All 4 branches missed.">                                    if (clientes.get(i).getNombre().equals(nombre) &amp;&amp; clientes.get(i).getNif().equals(dni)) {</span>
+<span class="nc bnc" id="L135" title="All 2 branches missed.">                                        for (int j = 0; j &lt; cuentas.size(); j++) {</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">                                            if (cuentas.get(j).getNifCliente() == clientes.get(i).getNif()) {</span>
+<span class="nc" id="L137">                                                System.out.println(clientes.get(i).toString());</span>
+<span class="nc" id="L138">                                                System.out.println(cuentas.get(j).toString());</span>
+                                            }
+                                        }
+
+                                    }
+                                }
+<span class="nc" id="L144">                                break;</span>
+                            case 5:
+<span class="nc" id="L146">                                System.out.println(&quot;Hasta la proxima.&quot;);</span>
+<span class="nc" id="L147">                                break;</span>
+                            default:
+<span class="nc" id="L149">                                System.out.println(&quot;No ha elegido un número correcto&quot;);</span>
+                                break;
+                        }
+<span class="nc bnc" id="L152" title="All 2 branches missed.">                    } while (u != 5);</span>
+<span class="nc" id="L153">                    break;</span>
+                case 2:
+                    int g;
+                    do {
+<span class="nc" id="L157">                        g = menuGes();</span>
+<span class="nc bnc" id="L158" title="All 5 branches missed.">                        switch (g) {</span>
+                            case 1:
+<span class="nc" id="L160">                                System.out.println(&quot;Introduce el nombre de usuario: &quot;);</span>
+<span class="nc" id="L161">                                String usuario = sc.next();</span>
+<span class="nc" id="L162">                                System.out.println(&quot;Introduce la clave: &quot;);</span>
+<span class="nc" id="L163">                                String clave = sc.next();</span>
+<span class="nc bnc" id="L164" title="All 2 branches missed.">                                for (int i = 0; i &lt; gestores.size(); i++) {</span>
+<span class="nc bnc" id="L165" title="All 4 branches missed.">                                    if (gestores.get(i).getNombre().equals(usuario) &amp;&amp; gestores.get(i).getClave().equals(clave)) {</span>
+<span class="nc" id="L166">                                        System.out.println(&quot;Nuevo cliente: &quot;);</span>
+<span class="nc" id="L167">                                        clientes.add(gestores.get(i).crearCliente());</span>
+<span class="nc" id="L168">                                        int c = clientes.size();</span>
+<span class="nc" id="L169">                                        System.out.println(&quot;Nueva cuenta: &quot;);</span>
+<span class="nc" id="L170">                                        cuentas.add(gestores.get(i).crearCuenta(clientes.get(c - 1)));</span>
+
+<span class="nc" id="L172">                                        System.out.println(&quot;El cliente quiere tarjeta? [(SI)1,(NO)2]&quot;);</span>
+<span class="nc" id="L173">                                        int s = sc.nextInt();</span>
+<span class="nc bnc" id="L174" title="All 2 branches missed.">                                        if (s == 1) {</span>
+<span class="nc" id="L175">                                            tar.add(gestores.get(i).crearTarjeta(clientes.get(i)));</span>
+                                        } else {
+<span class="nc" id="L177">                                            System.out.println(&quot;Operación realizada&quot;);</span>
+                                        }
+                                    }
+                                }
+<span class="nc" id="L181">                                mostrar(clientes, cuentas);</span>
+
+<span class="nc" id="L183">                                break;</span>
+                            case 2:
+<span class="nc" id="L185">                                System.out.println(&quot;Introduce el nombre de usuario: &quot;);</span>
+<span class="nc" id="L186">                                usuario = sc.next();</span>
+<span class="nc" id="L187">                                System.out.println(&quot;Introduce la clave: &quot;);</span>
+<span class="nc" id="L188">                                clave = sc.next();</span>
+
+<span class="nc bnc" id="L190" title="All 2 branches missed.">                                for (int i = 0; i &lt; gestores.size(); i++) {</span>
+<span class="nc bnc" id="L191" title="All 4 branches missed.">                                    if (gestores.get(i).getNombre().equals(usuario) &amp;&amp; gestores.get(i).getClave().equals(clave)) {</span>
+<span class="nc" id="L192">                                        System.out.println(&quot;Introduce el dni del cliente&quot;);</span>
+<span class="nc" id="L193">                                        String dni = sc.next();</span>
+<span class="nc bnc" id="L194" title="All 2 branches missed.">                                        for (int j = 0; j &lt; clientes.size(); j++) {</span>
+<span class="nc bnc" id="L195" title="All 2 branches missed.">                                            if (clientes.get(j).getNif().equals(dni)) {</span>
+<span class="nc" id="L196">                                                cuentas.add(gestores.get(i).crearCuenta(clientes.get(i)));</span>
+                                            }
+                                        }
+
+                                    }
+                                }
+<span class="nc" id="L202">                                break;</span>
+                            case 3:
+
+<span class="nc" id="L205">                                System.out.println(&quot;Introduce el nombre de usuario: &quot;);</span>
+<span class="nc" id="L206">                                usuario = sc.next();</span>
+<span class="nc" id="L207">                                System.out.println(&quot;Introduce la clave: &quot;);</span>
+<span class="nc" id="L208">                                clave = sc.next();</span>
+<span class="nc" id="L209">                                System.out.println(&quot;A continuación se van a mostrar las cuentas y los clientes&quot;);</span>
+<span class="nc" id="L210">                                System.out.println(&quot;Pulsa 'C' para continuar&quot;);</span>
+<span class="nc" id="L211">                                String c = sc.next();</span>
+<span class="nc" id="L212">                                mostrar(clientes, cuentas);</span>
+<span class="nc" id="L213">                                System.out.println(&quot;Pulsa 'C' para continuar&quot;);</span>
+<span class="nc" id="L214">                                c = sc.next();</span>
+<span class="nc" id="L215">                                int op = submenu();</span>
+<span class="nc bnc" id="L216" title="All 2 branches missed.">                                for (int i = 0; i &lt; gestores.size(); i++) {</span>
+<span class="nc bnc" id="L217" title="All 4 branches missed.">                                    if (gestores.get(i).getNombre().equals(usuario) &amp;&amp; gestores.get(i).getClave().equals(clave)) {</span>
+<span class="nc bnc" id="L218" title="All 9 branches missed.">                                        switch (op) {</span>
+                                            case 1:
+
+<span class="nc" id="L221">                                                System.out.println(&quot;Introduce el nombre del cliente que desea cambiar: &quot;);</span>
+<span class="nc" id="L222">                                                String nombre = sc.next();</span>
+<span class="nc" id="L223">                                                System.out.println(&quot;Introduce el dni del cliente que desea cambiar: &quot;);</span>
+<span class="nc" id="L224">                                                String dni = sc.next();</span>
+<span class="nc bnc" id="L225" title="All 2 branches missed.">                                                for (int j = 0; j &lt; clientes.size(); j++) {</span>
+<span class="nc bnc" id="L226" title="All 4 branches missed.">                                                    if (clientes.get(j).getNombre().equals(nombre) &amp;&amp; clientes.get(j).getNif().equals(dni)) {</span>
+<span class="nc" id="L227">                                                        clientes.get(j).setNombre(gestores.get(i).modificarS(op));</span>
+                                                    }
+                                                }
+<span class="nc" id="L230">                                                break;</span>
+                                            case 2:
+
+<span class="nc" id="L233">                                                System.out.println(&quot;Introduce los apellidos del cliente que desea cambiar: &quot;);</span>
+<span class="nc" id="L234">                                                String apellidos = sc.next();</span>
+<span class="nc" id="L235">                                                System.out.println(&quot;Introduce el dni del cliente que desea cambiar: &quot;);</span>
+<span class="nc" id="L236">                                                dni = sc.next();</span>
+<span class="nc bnc" id="L237" title="All 2 branches missed.">                                                for (int j = 0; j &lt; clientes.size(); j++) {</span>
+<span class="nc bnc" id="L238" title="All 4 branches missed.">                                                    if (clientes.get(j).getApellidos().equals(apellidos) &amp;&amp; clientes.get(j).getNif().equals(dni)) {</span>
+<span class="nc" id="L239">                                                        clientes.get(j).setApellidos(gestores.get(i).modificarS(op));</span>
+                                                    }
+                                                }
+<span class="nc" id="L242">                                                break;</span>
+                                            case 3:
+
+<span class="nc" id="L245">                                                System.out.println(&quot;Introduce la dirección del cliente que desea cambiar: &quot;);</span>
+<span class="nc" id="L246">                                                String direccion = sc.next();</span>
+<span class="nc" id="L247">                                                System.out.println(&quot;Introduce el dni del cliente que desea cambiar: &quot;);</span>
+<span class="nc" id="L248">                                                dni = sc.next();</span>
+<span class="nc bnc" id="L249" title="All 2 branches missed.">                                                for (int j = 0; j &lt; clientes.size(); j++) {</span>
+<span class="nc bnc" id="L250" title="All 4 branches missed.">                                                    if (clientes.get(j).getDireccion().equals(direccion) &amp;&amp; clientes.get(j).getNif().equals(dni)) {</span>
+<span class="nc" id="L251">                                                        clientes.get(j).setDireccion(gestores.get(i).modificarS(op));</span>
+                                                    }
+                                                }
+<span class="nc" id="L254">                                                break;</span>
+                                            case 4:
+
+<span class="nc" id="L257">                                                System.out.println(&quot;Introduce el dni del cliente que desea cambiar: &quot;);</span>
+<span class="nc" id="L258">                                                dni = sc.next();</span>
+<span class="nc bnc" id="L259" title="All 2 branches missed.">                                                for (int j = 0; j &lt; clientes.size(); j++) {</span>
+<span class="nc bnc" id="L260" title="All 2 branches missed.">                                                    if (clientes.get(j).getNif().equals(dni)) {</span>
+<span class="nc" id="L261">                                                        clientes.get(j).setNif(gestores.get(i).modificarS(op));</span>
+                                                    }
+                                                }
+<span class="nc bnc" id="L264" title="All 2 branches missed.">                                                for (int k = 0; k &lt; cuentas.size(); k++) {</span>
+<span class="nc bnc" id="L265" title="All 2 branches missed.">                                                    if (cuentas.get(k).getNifCliente().equals(dni)) {</span>
+<span class="nc" id="L266">                                                        cuentas.get(k).setNifCliente(gestores.get(i).modificarS(op));</span>
+                                                    }
+                                                }
+<span class="nc" id="L269">                                                break;</span>
+                                            case 5:
+
+<span class="nc" id="L272">                                                System.out.println(&quot;Introduce el telefono del cliente que desea cambiar: &quot;);</span>
+<span class="nc" id="L273">                                                int telefono = sc.nextInt();</span>
+<span class="nc" id="L274">                                                System.out.println(&quot;Introduce el dni del cliente que desea cambiar: &quot;);</span>
+<span class="nc" id="L275">                                                dni = sc.next();</span>
+<span class="nc bnc" id="L276" title="All 2 branches missed.">                                                for (int j = 0; j &lt; clientes.size(); j++) {</span>
+<span class="nc bnc" id="L277" title="All 4 branches missed.">                                                    if (clientes.get(j).getTelefono() == telefono &amp;&amp; clientes.get(j).getNif().equals(dni)) {</span>
+<span class="nc" id="L278">                                                        clientes.get(j).setTelefono(gestores.get(i).modificarT(op));</span>
+                                                    }
+                                                }
+<span class="nc" id="L281">                                                break;</span>
+                                            case 6:
+
+<span class="nc" id="L284">                                                System.out.println(&quot;Introduce la edad del cliente que desea cambiar: &quot;);</span>
+<span class="nc" id="L285">                                                int edad = sc.nextInt();</span>
+<span class="nc" id="L286">                                                System.out.println(&quot;Introduce el dni del cliente que desea cambiar: &quot;);</span>
+<span class="nc" id="L287">                                                dni = sc.next();</span>
+<span class="nc bnc" id="L288" title="All 2 branches missed.">                                                for (int j = 0; j &lt; clientes.size(); j++) {</span>
+<span class="nc bnc" id="L289" title="All 4 branches missed.">                                                    if (clientes.get(j).getEdad() == edad &amp;&amp; clientes.get(j).getNif().equals(dni)) {</span>
+<span class="nc" id="L290">                                                        clientes.get(j).setEdad(gestores.get(i).modificarT(op));</span>
+                                                    }
+                                                }
+<span class="nc" id="L293">                                                break;</span>
+                                            case 7:
+
+<span class="nc" id="L296">                                                System.out.println(&quot;Introduce el saldo del cliente que desea cambiar: &quot;);</span>
+<span class="nc" id="L297">                                                double saldo = sc.nextDouble();</span>
+<span class="nc" id="L298">                                                System.out.println(&quot;Introduce el dni del cliente que desea cambiar: &quot;);</span>
+<span class="nc" id="L299">                                                dni = sc.next();</span>
+<span class="nc bnc" id="L300" title="All 2 branches missed.">                                                for (int j = 0; j &lt; cuentas.size(); j++) {</span>
+<span class="nc bnc" id="L301" title="All 4 branches missed.">                                                    if (cuentas.get(j).getSaldo() == saldo &amp;&amp; cuentas.get(j).getNifCliente().equals(dni)) {</span>
+<span class="nc" id="L302">                                                        cuentas.get(j).setSaldo(gestores.get(i).modificarT(op));</span>
+                                                    }
+                                                }
+<span class="nc" id="L305">                                                break;</span>
+                                            case 8:
+<span class="nc" id="L307">                                                System.out.println(&quot;Introduce el limite del cliente que desea cambiar: &quot;);</span>
+<span class="nc" id="L308">                                                int limite = sc.nextInt();</span>
+<span class="nc" id="L309">                                                System.out.println(&quot;Introduce el dni del cliente que desea cambiar: &quot;);</span>
+<span class="nc" id="L310">                                                dni = sc.next();</span>
+<span class="nc bnc" id="L311" title="All 2 branches missed.">                                                for (int j = 0; j &lt; cuentas.size(); j++) {</span>
+<span class="nc bnc" id="L312" title="All 4 branches missed.">                                                    if (cuentas.get(j).getLimite() == limite &amp;&amp; cuentas.get(j).getNifCliente().equals(dni)) {</span>
+<span class="nc" id="L313">                                                        cuentas.get(j).setLimite(gestores.get(i).modificarT(op));</span>
+                                                    }
+                                                }
+                                                break;
+
+                                        }
+                                    }
+                                }
+<span class="nc" id="L321">                                break;</span>
+                            case 4:
+<span class="nc" id="L323">                                System.out.println(&quot;Hasta la proxima&quot;);</span>
+<span class="nc" id="L324">                                break;</span>
+                            default:
+<span class="nc" id="L326">                                System.out.println(&quot;Opción incorrecta&quot;);</span>
+                                break;
+                        }
+<span class="nc bnc" id="L329" title="All 2 branches missed.">                    } while (g != 4);</span>
+<span class="nc" id="L330">                    break;</span>
+                case 3:
+<span class="nc" id="L332">                    System.out.println(&quot;Hasta la proxima&quot;);</span>
+<span class="nc" id="L333">                    break;</span>
+                default:
+<span class="nc" id="L335">                    System.out.println(&quot;Opción incorrecta&quot;);</span>
+                    break;
+
+            }
+<span class="nc bnc" id="L339" title="All 2 branches missed.">        } while (opc != 3);</span>
+
+<span class="nc" id="L341">    }</span>
+
+    /**
+     *
+     * @return
+     */
+    public static int mostrarMenu() {
+<span class="nc" id="L348">        System.out.println(&quot;BANCO CAÑAV&quot;);</span>
+<span class="nc" id="L349">        System.out.println(&quot;1. Usuario&quot;);</span>
+<span class="nc" id="L350">        System.out.println(&quot;2. Gestor&quot;);</span>
+<span class="nc" id="L351">        System.out.println(&quot;3. Salir&quot;);</span>
+<span class="nc" id="L352">        System.out.println(&quot;Introduce una opción&quot;);</span>
+<span class="nc" id="L353">        int o = sc.nextInt();</span>
+<span class="nc" id="L354">        return o;</span>
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static int menuUsu() {
+<span class="nc" id="L362">        System.out.println(&quot;Menu Usuario&quot;);</span>
+<span class="nc" id="L363">        System.out.println(&quot;1. Ingresar dinero&quot;);</span>
+<span class="nc" id="L364">        System.out.println(&quot;2. Retirar dinero&quot;);</span>
+<span class="nc" id="L365">        System.out.println(&quot;3. Pagar con tarjeta&quot;);</span>
+<span class="nc" id="L366">        System.out.println(&quot;4. Ver información&quot;);</span>
+<span class="nc" id="L367">        System.out.println(&quot;5. Salir&quot;);</span>
+<span class="nc" id="L368">        System.out.println(&quot;Introduce una opción: &quot;);</span>
+<span class="nc" id="L369">        int o = sc.nextInt();</span>
+<span class="nc" id="L370">        return o;</span>
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static int menuGes() {
+<span class="nc" id="L378">        System.out.println(&quot;Menu Gestores&quot;);</span>
+<span class="nc" id="L379">        System.out.println(&quot;1. Crear nuevo cliente y cuenta&quot;);</span>
+<span class="nc" id="L380">        System.out.println(&quot;2. Crear cuenta&quot;);</span>
+<span class="nc" id="L381">        System.out.println(&quot;3. Modificar cuenta&quot;);</span>
+<span class="nc" id="L382">        System.out.println(&quot;4. Salir&quot;);</span>
+<span class="nc" id="L383">        System.out.println(&quot;Introduce una opción: &quot;);</span>
+<span class="nc" id="L384">        int o = sc.nextInt();</span>
+<span class="nc" id="L385">        return o;</span>
+    }
+
+    /**
+     *
+     * @return
+     */
+    public static int submenu() {
+<span class="nc" id="L393">        System.out.println(&quot;Que desea modificar? &quot;);</span>
+<span class="nc" id="L394">        System.out.println(&quot;1. Nombre&quot;);</span>
+<span class="nc" id="L395">        System.out.println(&quot;2. Apellidos&quot;);</span>
+<span class="nc" id="L396">        System.out.println(&quot;3. Dirección&quot;);</span>
+<span class="nc" id="L397">        System.out.println(&quot;4. Dni&quot;);</span>
+<span class="nc" id="L398">        System.out.println(&quot;5. Telefono&quot;);</span>
+<span class="nc" id="L399">        System.out.println(&quot;6. Edad&quot;);</span>
+<span class="nc" id="L400">        System.out.println(&quot;7. Cantidad&quot;);</span>
+<span class="nc" id="L401">        System.out.println(&quot;8. Limite&quot;);</span>
+<span class="nc" id="L402">        System.out.println(&quot;Introduce una opción: &quot;);</span>
+<span class="nc" id="L403">        int opc = sc.nextInt();</span>
+<span class="nc" id="L404">        return opc;</span>
+    }
+
+    /**
+     *
+     * @param clientes
+     * @param cuentas
+     */
+    public static void mostrar(ArrayList clientes, ArrayList cuentas) {
+<span class="nc" id="L413">        System.out.println(&quot;CLIENTES: &quot;);</span>
+<span class="nc bnc" id="L414" title="All 2 branches missed.">        for (int i = 0; i &lt; clientes.size(); i++) {</span>
+<span class="nc" id="L415">            System.out.println(clientes.get(i).toString());</span>
+        }
+<span class="nc" id="L417">        System.out.println(&quot;CUENTAS: &quot;);</span>
+<span class="nc bnc" id="L418" title="All 2 branches missed.">        for (int i = 0; i &lt; cuentas.size(); i++) {</span>
+<span class="nc" id="L419">            System.out.println(cuentas.get(i).toString());</span>
+        }
+<span class="nc" id="L421">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
