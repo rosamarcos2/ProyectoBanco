@@ -4,21 +4,13 @@
  * and open the template in the editor.
  */
 
-import static banco.Banco.menuGes;
-import static banco.Banco.menuUsu;
-import static banco.Banco.mostrar;
-import static banco.Banco.mostrarMenu;
+
 import banco.Cliente;
 import banco.Cuenta;
 import banco.Gestor;
 import banco.tarjeta;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Scanner;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -30,6 +22,7 @@ import static org.junit.Assert.*;
  */
 
 public class BancoTest {
+
    @Test
     public void Cuenta(){
     Cuenta c= new Cuenta("45345658L",5789,1000,100,LocalDate.of(2019, 5, 13));
