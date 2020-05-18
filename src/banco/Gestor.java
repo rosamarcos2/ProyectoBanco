@@ -113,13 +113,11 @@ public class Gestor {
      * @return nueva tarjeta
      */
     public tarjeta crearTarjeta(Cliente cliente) {
-        Random rn = new Random();
         System.out.println("Usted va a crear una nueva tarjeta");
         System.out.println("Introduce el limite de pago normal con tarjeta: ");
         double pago = sc.nextDouble();
         System.out.println("Introduce el limite de pago por internet");
         double in = sc.nextDouble();
-        int cuenta = (int) Math.floor(Math.random() * 5000 + 1);
         ArrayList<tarjeta> tar = new ArrayList();
         tar.add(new tarjeta(cliente.getCuenta(), pago, in));
         return tar.get(0);

@@ -171,7 +171,7 @@ public class Cliente {
      * @return boolean true si el dinero es menor que el saldo
      */
     public boolean retirar(double dinero, Cuenta nuevo) {
-        if (nuevo.saldo >= dinero) {
+        if (nuevo.saldo >= dinero && nuevo.limite>=dinero) {
             nuevo.saldo = nuevo.saldo - dinero;
             nuevo.setSaldo(nuevo.getSaldo() - dinero);
             return true;
