@@ -225,7 +225,7 @@ public class Banco {
                                                 String dni = sc.next();
                                                 for (int j = 0; j < clientes.size(); j++) {
                                                     if (clientes.get(j).getNombre().equals(nombre) && clientes.get(j).getNif().equals(dni)) {
-                                                        clientes.get(j).setNombre(gestores.get(i).modificarS(op));
+                                                        gestores.get(i).modificar(op,clientes.get(j));
                                                     }
                                                 }
                                                 break;
@@ -237,7 +237,7 @@ public class Banco {
                                                 dni = sc.next();
                                                 for (int j = 0; j < clientes.size(); j++) {
                                                     if (clientes.get(j).getApellidos().equals(apellidos) && clientes.get(j).getNif().equals(dni)) {
-                                                        clientes.get(j).setApellidos(gestores.get(i).modificarS(op));
+                                                        gestores.get(i).modificar(op,clientes.get(j));
                                                     }
                                                 }
                                                 break;
@@ -249,7 +249,7 @@ public class Banco {
                                                 dni = sc.next();
                                                 for (int j = 0; j < clientes.size(); j++) {
                                                     if (clientes.get(j).getDireccion().equals(direccion) && clientes.get(j).getNif().equals(dni)) {
-                                                        clientes.get(j).setDireccion(gestores.get(i).modificarS(op));
+                                                        gestores.get(i).modificar(op,clientes.get(j));
                                                     }
                                                 }
                                                 break;
@@ -258,14 +258,12 @@ public class Banco {
                                                 System.out.println("Introduce el dni del cliente que desea cambiar: ");
                                                 dni = sc.next();
                                                 for (int j = 0; j < clientes.size(); j++) {
-                                                    if (clientes.get(j).getNif().equals(dni)) {
-                                                        clientes.get(j).setNif(gestores.get(i).modificarS(op));
+                                                    if (clientes.get(j).getNif().equals(dni)) {                                                    
+                                                        for (int k = 0; k < cuentas.size(); k++) {
+                                                            if (cuentas.get(k).getNifCliente().equals(dni)) {
+                                                                gestores.get(i).modificar(op,clientes.get(j));
                                                     }
-                                                }
-                                                for (int k = 0; k < cuentas.size(); k++) {
-                                                    if (cuentas.get(k).getNifCliente().equals(dni)) {
-                                                        cuentas.get(k).setNifCliente(gestores.get(i).modificarS(op));
-                                                    }
+                                                        }}
                                                 }
                                                 break;
                                             case 5:
@@ -276,7 +274,7 @@ public class Banco {
                                                 dni = sc.next();
                                                 for (int j = 0; j < clientes.size(); j++) {
                                                     if (clientes.get(j).getTelefono() == telefono && clientes.get(j).getNif().equals(dni)) {
-                                                        clientes.get(j).setTelefono(gestores.get(i).modificarT(op));
+                                                        gestores.get(i).modificar(op,clientes.get(j));
                                                     }
                                                 }
                                                 break;
@@ -288,30 +286,7 @@ public class Banco {
                                                 dni = sc.next();
                                                 for (int j = 0; j < clientes.size(); j++) {
                                                     if (clientes.get(j).getEdad() == edad && clientes.get(j).getNif().equals(dni)) {
-                                                        clientes.get(j).setEdad(gestores.get(i).modificarT(op));
-                                                    }
-                                                }
-                                                break;
-                                            case 7:
-
-                                                System.out.println("Introduce el saldo del cliente que desea cambiar: ");
-                                                double saldo = sc.nextDouble();
-                                                System.out.println("Introduce el dni del cliente que desea cambiar: ");
-                                                dni = sc.next();
-                                                for (int j = 0; j < cuentas.size(); j++) {
-                                                    if (cuentas.get(j).getSaldo() == saldo && cuentas.get(j).getNifCliente().equals(dni)) {
-                                                        cuentas.get(j).setSaldo(gestores.get(i).modificarT(op));
-                                                    }
-                                                }
-                                                break;
-                                            case 8:
-                                                System.out.println("Introduce el limite del cliente que desea cambiar: ");
-                                                int limite = sc.nextInt();
-                                                System.out.println("Introduce el dni del cliente que desea cambiar: ");
-                                                dni = sc.next();
-                                                for (int j = 0; j < cuentas.size(); j++) {
-                                                    if (cuentas.get(j).getLimite() == limite && cuentas.get(j).getNifCliente().equals(dni)) {
-                                                        cuentas.get(j).setLimite(gestores.get(i).modificarT(op));
+                                                        gestores.get(i).modificar(op,clientes.get(j));
                                                     }
                                                 }
                                                 break;
@@ -343,11 +318,11 @@ public class Banco {
 
     /**
      *
-     * @return
+     * @return opcion
      */
     public static int mostrarMenu() {
         System.out.println("BANCO CAÑAV");
-        System.out.println("1. Usuario");
+        System.out.println("1. Cliente");
         System.out.println("2. Gestor");
         System.out.println("3. Salir");
         System.out.println("Introduce una opción");
@@ -357,10 +332,10 @@ public class Banco {
 
     /**
      *
-     * @return
+     * @return opcion
      */
     public static int menuUsu() {
-        System.out.println("Menu Usuario");
+        System.out.println("Menu Cliente");
         System.out.println("1. Ingresar dinero");
         System.out.println("2. Retirar dinero");
         System.out.println("3. Pagar con tarjeta");
@@ -373,7 +348,7 @@ public class Banco {
 
     /**
      *
-     * @return
+     * @return opcion
      */
     public static int menuGes() {
         System.out.println("Menu Gestores");
@@ -388,7 +363,7 @@ public class Banco {
 
     /**
      *
-     * @return
+     * @return opcion
      */
     public static int submenu() {
         System.out.println("Que desea modificar? ");
@@ -398,8 +373,6 @@ public class Banco {
         System.out.println("4. Dni");
         System.out.println("5. Telefono");
         System.out.println("6. Edad");
-        System.out.println("7. Cantidad");
-        System.out.println("8. Limite");
         System.out.println("Introduce una opción: ");
         int opc = sc.nextInt();
         return opc;

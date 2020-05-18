@@ -130,66 +130,45 @@ public class Gestor {
      * @param opc
      * @return nuevo String
      */
-    public String modificarS(int opc) {
-        String nom = "";
+    public boolean modificar(int opc, Cliente cliente) {
+        String nom=" ";
+        int n;
+        double no;
         switch (opc) {
+            
             case 1:
                 System.out.println("Introduce nuevo nombre: ");
                 nom = sc.next();
+                cliente.setNombre(nom);
                 break;
             case 2:
                 System.out.println("Introduce nuevos apellidos: ");
                 nom = sc.next();
+                cliente.setApellidos(nom);
                 break;
             case 3:
                 System.out.println("Introduce nueva dirección: ");
                 nom = sc.next();
+                cliente.setDireccion(nom);
                 break;
             case 4:
                 System.out.println("Introduce nuevo DNI: ");
                 nom = sc.next();
+                cliente.setNif(nom);
                 break;
-        }
-        return nom;
-    }
-
-    /**
-     *
-     * @param opc
-     * @return nuevo int
-     */
-    public int modificarT(int opc) {
-        int nom = 0;
-        switch (opc) {
             case 5:
                 System.out.println("Introduce el nuevo telefono: ");
-                nom = sc.nextInt();
+                n = sc.nextInt();
+                cliente.setTelefono(n);
                 break;
             case 6:
                 System.out.println("Introduce nueva edad: ");
-                nom = sc.nextInt();
+                n = sc.nextInt();
+                cliente.setEdad(n);
                 break;
         }
-        return nom;
+        return true;
     }
 
-    /**
-     *
-     * @param opc
-     * @return nuevo double
-     */
-    public double modificarD(int opc) {
-        double nom = 0;
-        switch (opc) {
-            case 7:
-                System.out.println("Introduce la nueva cantidad: ");
-                nom = sc.nextDouble();
-                break;
-            case 8:
-                System.out.println("Introduce nuevo valor limite: ");
-                nom = sc.nextDouble();
-                break;
-        }
-        return nom;
-    }
+
 }
