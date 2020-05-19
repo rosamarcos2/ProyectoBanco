@@ -66,7 +66,7 @@ public class tarjeta {
 
     @Override
     public String toString() {
-        return "tarjeta{" + "limiteCajero=" + limiteCajero + ", limiteInternet=" + limiteInternet + '}';
+        return "tarjeta con limite de cajero: " + limiteCajero + ",y su limite de Internet: " + limiteInternet ;
     }
 
 }

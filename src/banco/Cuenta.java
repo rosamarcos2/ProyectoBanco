@@ -117,7 +117,7 @@ public class Cuenta {
 
     @Override
     public String toString() {
-        return "Cuenta{" + "nifCliente=" + nifCliente + ", cuenta=" + cuenta + ", saldo=" + saldo + ", limite=" + limite + ", fechaApertura=" + fechaApertura + '}';
+        return "La cuenta de DNI " + nifCliente + ", con número de cuenta " + cuenta + ",un saldo de " + saldo + ",y un limite de " + limite + ", se arbio en " + fechaApertura + '}';
     }
     
     
