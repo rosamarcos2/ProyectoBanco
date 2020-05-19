@@ -354,7 +354,7 @@ public class Banco {
         System.out.println("Menu Gestores");
         System.out.println("1. Crear nuevo cliente y cuenta");
         System.out.println("2. Crear cuenta");
-        System.out.println("3. Modificar cuenta");
+        System.out.println("3. Modificar cliente");
         System.out.println("4. Salir");
         System.out.println("Introduce una opción: ");
         int o = sc.nextInt();
